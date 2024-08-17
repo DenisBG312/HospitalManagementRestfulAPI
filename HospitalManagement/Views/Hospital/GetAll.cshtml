@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HospitalManagementAPI.Models.Hospital>
+
+@{
+    ViewData["Title"] = "Hospitals List";
+}
+
+<h1>Hospitals List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Patients Count</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hospital in Model)
+        {
+            <tr>
+                <td>@hospital.Id</td>
+                <td>@hospital.Name</td>
+                <td>@hospital.PatientsCount</td>
+                <td>@hospital.Description</td>
+                <td>
+                    <!-- View Details Button -->
+                    <a asp-controller="Hospital" asp-action="Get" asp-route-id="@hospital.Id" class="btn btn-info">View</a>
+
+                    <!-- Edit Button -->
+                    <a asp-controller="Hospital" asp-action="Edit" asp-route-id="@hospital.Id" class="btn btn-primary">Edit</a>
+
+                    <!-- Delete Button -->
+                    <form asp-controller="Hospital" asp-action="Delete" asp-route-id="@hospital.Id" method="post" style="display:inline;">
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this hospital?');" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
