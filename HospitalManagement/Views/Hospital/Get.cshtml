@@ -1,0 +1,26 @@
+﻿@model HospitalManagementAPI.Models.Hospital
+
+@{
+    ViewData["Title"] = "Hospital Details";
+}
+
+<h1>@Model.Name</h1>
+
+<div>
+    <h2>Details</h2>
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Patients Count</dt>
+        <dd class="col-sm-10">@Model.PatientsCount</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+    </dl>
+</div>
+
+<a href="@Url.Action("CreateEdit")" class="btn btn-primary">Back to Create/Edit</a>
